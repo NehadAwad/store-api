@@ -10,3 +10,5 @@ const connectDB = (url) => {
 }
 
 module.exports = connectDB
+
+// mongodb+srv://nehad:imbest007@nodeprojects.gdiys.mongodb.net/?retryWrites=true&w=majority
