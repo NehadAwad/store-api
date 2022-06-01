@@ -6,7 +6,7 @@ const Product = require('./models/product')
 
 const jsonProducts = require('./products.json')
 
-const start = async () => {
+const  = async () => {
   try {
     await connectDB(process.env.MONGO_URI)
     await Product.deleteMany()
