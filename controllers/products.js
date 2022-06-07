@@ -1,5 +1,6 @@
 const Product = require('../models/product');
 
+// get all products controller
 const getAllProducts = async (req, res) => {
   const { featured, company, name, sort, fields, numericFilters } = req.query;
   const queryObject = {};
@@ -36,7 +37,7 @@ const getAllProducts = async (req, res) => {
   }
 
   let result = Product.find(queryObject);
-  // sort
+  // sort result
   if (sort) {
     const sortList = sort.split(',').join(' ');
     result = result.sort(sortList);

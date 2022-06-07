@@ -1,9 +1,8 @@
-// const a = require('dotenv').config()
-// console.log(a)
 
 const express = require('express')
 const app = express()
 require('dotenv').config()
+const productsRouter = require('./routes/products');
 
 const connectDB = require('./db/connect')
 
@@ -22,13 +21,13 @@ app.get('/', (req, res)=>{
 
 app.use('/api/v1/products', productsRouter);
 
-
 app.use(notFoundMiddleware)
 app.use(errorMiddleware)
 
 const port = process.env.PORT || 3000;
 
 
+//start server
 const start = async () => {
     try {
       // connectDB
