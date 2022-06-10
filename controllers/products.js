@@ -1,12 +1,6 @@
 const Product = require('../models/product');
 
-const getAllProductsStatic = async (req, res) => {
-  const products = await Product.find({ price: { $gt: 30 } })
-    .sort('price')
-    .select('name price');
 
-  res.status(200).json({ products, nbHits: products.length });
-};
 const getAllProducts = async (req, res) => {
   const { featured, company, name, sort, fields, numericFilters } = req.query;
   const queryObject = {};
@@ -28,6 +22,7 @@ const getAllProducts = async (req, res) => {
       '<': '$lt',
       '<=': '$lte',
     };
+
     const regEx = /\b(<|>|>=|=|<|<=)\b/g;
     let filters = numericFilters.replace(
       regEx,
@@ -60,8 +55,6 @@ const getAllProducts = async (req, res) => {
   const skip = (page - 1) * limit;
 
   result = result.skip(skip).limit(limit);
-  // 23
-  // 4 7 7 7 2
 
   const products = await result;
   res.status(200).json({ products, nbHits: products.length });
